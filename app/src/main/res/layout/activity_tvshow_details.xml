@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/charcoal"
+    tools:context="com.example.shubham.moviewala.TVshowDetails">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:id="@+id/Backdrop_tv"/>
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="130dp"
+                android:layout_margin="10dp"
+                android:id="@+id/smallpicture_tv"
+                android:layout_below="@id/Backdrop_tv"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:id="@+id/tv_title"
+                android:textSize="25dp"
+                android:layout_alignTop="@+id/smallpicture_tv"
+                android:layout_toRightOf="@+id/smallpicture_tv"
+                android:layout_toEndOf="@+id/smallpicture_tv" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_below="@+id/tv_title"
+                android:layout_toRightOf="@+id/smallpicture_tv"
+                android:layout_toEndOf="@+id/smallpicture_tv"
+                android:layout_marginTop="10dp"
+                android:id="@+id/genre_textview_tv" />
+            <RatingBar
+                android:layout_width="145dp"
+                android:layout_height="20dp"
+                android:id="@+id/tv_rating"
+                android:layout_below="@+id/genre_textview_tv"
+                style="?android:attr/ratingBarStyleSmall"
+                android:numStars="5"
+                android:max="5"
+                android:rating="5"
+                android:layout_toRightOf="@+id/smallpicture_tv"
+                android:layout_toEndOf="@+id/smallpicture_tv"
+                android:layout_marginTop="17dp" />
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/light_gray"
+            android:textColorHighlight="@color/colorPrimaryDark"
+            android:textSize="20dp"
+            android:layout_margin="5dp"
+            android:text="Overview"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:layout_margin="5dp"
+            android:id="@+id/overview_tv"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/light_gray"
+            android:textColorHighlight="@color/colorPrimaryDark"
+            android:textSize="20dp"
+            android:layout_margin="5dp"
+            android:text="Production"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:layout_margin="5dp"
+            android:id="@+id/production_tv"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/light_gray"
+            android:textColorHighlight="@color/colorPrimaryDark"
+            android:textSize="20dp"
+            android:layout_margin="5dp"
+            android:text="First on Air "/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:layout_margin="5dp"
+            android:id="@+id/release_date_tv"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/light_gray"
+            android:textColorHighlight="@color/colorPrimaryDark"
+            android:textSize="20dp"
+            android:layout_margin="5dp"
+            android:text="Cast"/>
+
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/cast_tv">
+        </android.support.v7.widget.RecyclerView>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/light_gray"
+            android:textColorHighlight="@color/colorPrimaryDark"
+            android:textSize="20dp"
+            android:layout_margin="5dp"
+            android:text="Similar Movies"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/similar_movies_tv">
+        </android.support.v7.widget.RecyclerView>
+
+    </LinearLayout>
+
+
+</android.support.v4.widget.NestedScrollView>
