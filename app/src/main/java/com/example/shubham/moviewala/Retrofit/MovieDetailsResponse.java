@@ -10,11 +10,11 @@ import java.util.ArrayList;
 
 public class MovieDetailsResponse {
 
-    String backdrop_path;
-    int id;
-    String overview;
-    String original_title;
-    String poster_path;
+    public String backdrop_path;
+    public int id;
+    public String overview;
+    public String original_title;
+    public String poster_path;
 
     public String getBackdrop_path() {
         return backdrop_path;
@@ -36,8 +36,6 @@ public class MovieDetailsResponse {
         return poster_path;
     }
 
-
-
     public String getRelease_date() {
         return release_date;
     }
@@ -48,8 +46,8 @@ public class MovieDetailsResponse {
 
     public ArrayList<Object> production_companies;
     public ArrayList<Object> genres;
-    String release_date;
-    int vote_average;
+    public String release_date;
+    public int vote_average;
 
 
 

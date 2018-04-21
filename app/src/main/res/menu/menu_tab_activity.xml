@@ -3,8 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.shubham.moviewala.Movie_Tab_activity">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/Search"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
+        android:icon="@drawable/ic_action_action_search"
+        android:title="SEARCH"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/show_watchlist"
+        android:title="WATCHLIST"
+        ></item>
 </menu>

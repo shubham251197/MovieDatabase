@@ -55,6 +55,7 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Movi
     public void onBindViewHolder(MovieViewHolder holder, int position) {
 
         Movie m=mMovies.get(position);
+        mMovies.get(position).setWatchList(false);
         holder.titleText.setText(m.title);
         String genre=m.genre_ids.get(0);
         for(int i=1;i<m.genre_ids.size();i++)
@@ -81,7 +82,6 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Movi
         ImageView Poster;
         MovieClickListener movieClickListener;
 
-
     public MovieViewHolder(View itemView,MovieClickListener listener) {
 
         super(itemView);
@@ -103,8 +103,11 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Movi
         int position=getAdapterPosition();
         if(position!= RecyclerView.NO_POSITION){
             if(id==R.id.watchlist_button){
+
                 watchList.setImageResource(android.R.drawable.btn_star_big_on);
+                Snackbar.make(view,"ADDED TO WATCHLIST",Snackbar.LENGTH_SHORT).show();
                 movieClickListener.onStarButtonClickListener(position);
+
             }
             else if(id==R.id.list_item_layout){
                 movieClickListener.onItemClickListener(view,position);

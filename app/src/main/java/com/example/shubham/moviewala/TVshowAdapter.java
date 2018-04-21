@@ -1,6 +1,7 @@
 package com.example.shubham.moviewala;
 
 import android.content.Context;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -108,13 +109,13 @@ public class TVshowAdapter extends RecyclerView.Adapter<TVshowAdapter.TVshowView
             if(position!= RecyclerView.NO_POSITION){
                 if(id==R.id.watchlist_button){
                     watchList.setImageResource(android.R.drawable.btn_star_big_on);
+                    Snackbar.make(view,"ADDED TO WATCHLIST",Snackbar.LENGTH_SHORT).show();
                     TVshowClickListener.onStarButtonClickListener(position);
                 }
                 else if(id==R.id.list_item_layout){
                     TVshowClickListener.onItemClickListener(view,position);
                 }
             }
-
         }
     }
 }

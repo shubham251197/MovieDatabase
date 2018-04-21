@@ -12,12 +12,12 @@ public class TVshow {
 
 
     @SerializedName("name")
-    String title;
-    String poster_path;
+    public String title;
+    public String poster_path;
     public int id;
     public ArrayList<String> genre_ids;
-    Boolean WatchList;
-    float vote_average;
+    public Boolean WatchList;
+    public float vote_average;
 
 
     public TVshow(String title, ArrayList<String> genre) {

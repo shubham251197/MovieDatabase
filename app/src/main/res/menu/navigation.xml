@@ -3,11 +3,13 @@
 
     <item
         android:id="@+id/movies"
-        android:title="MOVIE" />
+        android:title="MOVIE"
+       />
 
     <item
         android:id="@+id/tv_show"
-        android:title="TV SHOW" />
+        android:title="TV SHOW"
+        />
 
 
 

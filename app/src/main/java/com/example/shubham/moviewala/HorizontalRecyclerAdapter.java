@@ -53,8 +53,8 @@ public class HorizontalRecyclerAdapter extends RecyclerView.Adapter<HorizontalRe
     @Override
     public void onBindViewHolder(HorizontalViewHolder holder, int position) {
 
-        holder.name.setText(mList.get(position).title);
-        String url="http://image.tmdb.org/t/p/w300"+mList.get(position).image;
+        holder.name.setText(mList.get(position).original_title);
+        String url="http://image.tmdb.org/t/p/w300"+mList.get(position).poster_path;
         Picasso.with(mContext).load(url).into(holder.photo);
     }
 
@@ -74,13 +74,14 @@ public class HorizontalRecyclerAdapter extends RecyclerView.Adapter<HorizontalRe
            photo=(ImageView) itemView.findViewById(R.id.photo);
            name=(TextView) itemView.findViewById(R.id.name);
            ClickListener=listner;
+           itemView.setOnClickListener(this);
        }
 
        @Override
        public void onClick(View view) {
 
-           int pos=getAdapterPosition();
-           ClickListener.OnHorizontalItemClick(view,pos);
+                int pos=getAdapterPosition();
+                ClickListener.OnHorizontalItemClick(view,pos);
 
        }
    }

@@ -9,16 +9,26 @@ import java.util.ArrayList;
 public class Movie {
 
     public int id;
-    String title;
-    String poster_path;
+    public String title;
+    public String poster_path;
     public ArrayList<String> genre_ids;
-    Boolean WatchList;
-    float vote_average;
+    public Boolean WatchList;
+    public float vote_average;
 
+    public void setWatchList(Boolean watchList) {
+        WatchList = watchList;
+    }
 
-    public Movie(String title, ArrayList<String> genre) {
+    public Boolean getWatchList() {
+        return WatchList;
+    }
+
+    public Movie(int id, String title, String poster_path, ArrayList<String> genre_ids, Boolean watchList, float vote_average) {
+        this.id = id;
         this.title = title;
-        this.genre_ids = genre;
-        this.WatchList=false;
+        this.poster_path = poster_path;
+        this.genre_ids = genre_ids;
+        WatchList = watchList;
+        this.vote_average = vote_average;
     }
 }

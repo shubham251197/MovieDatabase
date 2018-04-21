@@ -16,6 +16,7 @@ public interface ApiInterface {
 
     Call<MovieResponse> getPopularMovies(@Query("api_key") String api);
 
+
  @GET("movie/top_rated?api_key=5054967fd9429124090ebee0d4a99aea")
 
     Call<MovieResponse> getTopRatedMovies();
@@ -28,9 +29,12 @@ public interface ApiInterface {
 
     Call<GenreResposne> getGenres();
 
-    @GET("genre/tv/list?api_key=5054967fd9429124090ebee0d4a99aea&language=en-US")
+ @GET("genre/tv/list?api_key=5054967fd9429124090ebee0d4a99aea&language=en-US")
 
     Call<GenreResposne> getTVGenres();
+
+ @GET("search/collection")
+    Call<SearchResponse> getSearches(@Query("api_key") String api,@Query("language") String lang,@Query("query") String q);
 
  @GET("tv/popular?api_key=5054967fd9429124090ebee0d4a99aea&language=en-US&page=1")
 
@@ -44,10 +48,16 @@ public interface ApiInterface {
 
     Call<TVshowResponse> getTopratedTvshow();
 
- @GET("movie/{movie_id}?api_key=5054967fd9429124090ebee0d4a99aea&language=en-US")
+ @GET("movie/{id}")
 
-    Call<MovieDetailsResponse> getMovieDetails(@Path("movie_id") int id);
+    Call<MovieDetailsResponse> getMovieDetails(@Path("id") int movieId,@Query("api_key") String apikey);
 
   @GET("tv/{tv_id}")
     Call<TVshowDetailsResponse> getTVshowDetails(@Path("tv_id") int id,@Query("api_key") String api,@Query("language") String lang);
+
+  @GET("movie/{movie_id}/similar?api_key=5054967fd9429124090ebee0d4a99aea&language=en-US&page=1")
+    Call<SimilarMoviesResponse> getSimilarMovies(@Path("movie_id") int id);
+
+    @GET("movie/{id}/credits?api_key=5054967fd9429124090ebee0d4a99aea")
+    Call<CastResponse> getCast(@Path("id") int id);
 }

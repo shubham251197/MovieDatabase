@@ -1,5 +1,9 @@
 package com.example.shubham.moviewala.TabMoviesFragments;
 
+import android.content.ContentValues;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -13,7 +17,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.shubham.moviewala.AppOpenHelper;
 import com.example.shubham.moviewala.Movie;
+import com.example.shubham.moviewala.MovieDetailsShow;
 import com.example.shubham.moviewala.MovieListAdapter;
 import com.example.shubham.moviewala.Object;
 import com.example.shubham.moviewala.R;
@@ -57,13 +63,46 @@ public class UpComingMoviesFragment extends Fragment{
             @Override
             public void onItemClickListener(View view, int position) {
 
-                Snackbar.make(view,"CLICKED",Snackbar.LENGTH_SHORT).show();
+                int movieID=MovieList.get(position).id;
+                Intent intent=new Intent(getContext(),MovieDetailsShow.class);
+                String genre=MovieList.get(position).genre_ids.get(0);
+                for(int i=1;i<MovieList.get(position).genre_ids.size();i++)
+                    genre=genre+"-"+ MovieList.get(position).genre_ids.get(i);
+                intent.putExtra("movie_detail",movieID+";"+genre);
+                startActivity(intent);
             }
 
             @Override
             public void onStarButtonClickListener(int position) {
 
-                Toast.makeText(getContext(),"ADDED TO WATCHLIST",Toast.LENGTH_SHORT).show();
+                AppOpenHelper openHelper=new AppOpenHelper(getContext());
+                SQLiteDatabase database= openHelper.getWritableDatabase();
+                ContentValues cv=new ContentValues();
+
+                String genre=MovieList.get(position).genre_ids.get(0);
+                for(int i=1;i<MovieList.get(position).genre_ids.size();i++)
+                    genre=genre+"-"+ MovieList.get(position).genre_ids.get(i);
+
+
+                cv.put(AppOpenHelper.DB_TITLE,MovieList.get(position).title);
+                cv.put(AppOpenHelper.DB_POSTER,MovieList.get(position).poster_path);
+                cv.put(AppOpenHelper.DB_GENRE,genre);
+                cv.put(AppOpenHelper.DB_ID,MovieList.get(position).id);
+                cv.put(AppOpenHelper.DB_VOTE_AVG,(int)MovieList.get(position).vote_average);
+                cv.put(AppOpenHelper.DB_WATCHLIST,1);
+
+
+                int flag=0;
+                Cursor cursor= database.query(AppOpenHelper.DB_TABLENAME,null,null,null,null,null,null);
+                while (cursor.moveToNext()){
+                    int id=cursor.getInt(cursor.getColumnIndex(AppOpenHelper.DB_ID));
+                    if(id==MovieList.get(position).id){
+                        flag=1;
+                        break;
+                    }
+                }
+                if(flag==0)
+                    database.insert(AppOpenHelper.DB_TABLENAME,null,cv);
 
             }
         });

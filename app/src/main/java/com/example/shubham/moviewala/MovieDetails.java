@@ -31,7 +31,7 @@ public class MovieDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_details);
         Intent i=getIntent();
-        id=i.getIntExtra("movie_detail",0);
+        id=i.getIntExtra("movie_detail",-1);
         Log.i("TAG",id+"");
         fetchDetails();
     }
@@ -44,7 +44,7 @@ public class MovieDetails extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         ApiInterface apiInterface=retrofit.create(ApiInterface.class);
-        Call<MovieDetailsResponse> call=apiInterface.getMovieDetails(id);
+        Call<MovieDetailsResponse> call=apiInterface.getMovieDetails(id,"29213ce3aa2d1e8b18fb60d618ccec21");
 
         call.enqueue(new Callback<MovieDetailsResponse>() {
             @Override
@@ -72,7 +72,7 @@ public class MovieDetails extends AppCompatActivity {
         TextView genre=(TextView) findViewById(R.id.genre_textview);
         RatingBar ratingBar=(RatingBar) findViewById(R.id.movie_rating);
         TextView overview=(TextView) findViewById(R.id.overview);
-        TextView production=(TextView) findViewById(R.id.production);
+        //TextView production=(TextView) findViewById(R.id.production);
         TextView releaseDate=(TextView) findViewById(R.id.release_date);
 
 
@@ -96,7 +96,7 @@ public class MovieDetails extends AppCompatActivity {
             movie_production+=" - "+movieDetailsResponse.production_companies.get(i).name;
 
         }
-        production.setText(movie_production);
+        //production.setText(movie_production);
 
         String url_backdrop="http://image.tmdb.org/t/p/w300"+movieDetailsResponse.getBackdrop_path();
         Picasso.with(this).load(url_backdrop).into(backdrop);

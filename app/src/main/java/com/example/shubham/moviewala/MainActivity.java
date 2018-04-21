@@ -1,5 +1,6 @@
 package com.example.shubham.moviewala;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,6 +14,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -75,11 +77,31 @@ public class MainActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
 
+
+
     }
 
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_tab_activity,menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id=item.getItemId();
+        if(id==R.id.Search){
+            Intent i=new Intent(MainActivity.this,SearchActivity.class);
+            startActivity(i);
+        }
+        else if(id==R.id.show_watchlist){
+            Intent i=new Intent(MainActivity.this,WatchlistActivity.class);
+            startActivity(i);
+        }
 
+        return true;
+    }
 
     public class SectionsPagerAdapterMovie extends FragmentStatePagerAdapter {
 

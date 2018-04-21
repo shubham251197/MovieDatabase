@@ -10,9 +10,9 @@ import java.util.ArrayList;
 
 public class TVshowDetailsResponse {
 
-    int id;
-    String backdrop_path;
-    String first_air_date;
+    public int id;
+    public String backdrop_path;
+    public String first_air_date;
 
     public int getId() {
         return id;
@@ -42,11 +42,11 @@ public class TVshowDetailsResponse {
         return vote_average;
     }
 
-    ArrayList<Object> genres;
-    String original_name;
-    String overview;
-    String poster_path;
+    public ArrayList<Object> genres;
+    public String original_name;
+    public String overview;
+    public String poster_path;
     ArrayList<Object> production_companies;
-    int vote_average;
+    public int vote_average;
 
 }
