@@ -97,9 +97,14 @@ public class MainActivity extends AppCompatActivity {
         }
         else if(id==R.id.show_watchlist){
             Intent i=new Intent(MainActivity.this,WatchlistActivity.class);
+            i.putExtra("isSuggestions",false);
             startActivity(i);
         }
-
+        else if(id==R.id.show_suggestions){
+            Intent i=new Intent(MainActivity.this,WatchlistActivity.class);
+            i.putExtra("isSuggestions",true);
+            startActivity(i);
+        }
         return true;
     }
 

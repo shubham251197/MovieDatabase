@@ -13,4 +13,9 @@
         android:id="@+id/show_watchlist"
         android:title="WATCHLIST"
         ></item>
+
+    <item
+        android:id="@+id/show_suggestions"
+        android:title="SUGGESTIONS"
+        ></item>
 </menu>
